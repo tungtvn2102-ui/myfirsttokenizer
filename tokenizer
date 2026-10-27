@@ -1,0 +1,26 @@
+#first tokenizer I built by my hand from scratch (1 month in learning python)
+#My thought process was since LLM tokenize all characters and then detokenize it, I want to make a dictionary where all the letters are possible with value(number in this case) 
+#and then use a second list for the tokenizer to tokenize it
+#So I dedcided to reference the map() function to map the value of all characters into my dictionary values(number). 
+#The detokenizer also use the same princilple, I just map it with the reverse dictionary.
+
+x = {
+    'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 
+    'j': 9, 'k': 10, 'l': 11, 'm': 12, 'n': 13, 'o': 14, 'p': 15, 'q': 16, 
+    'r': 17, 's': 18, 't': 19, 'u': 20, 'v': 21, 'w': 22, 'x': 23, 'y': 24, 'z': 25 , ' ':26
+}
+
+reverse_x= {v:k for k,v in x.items()}
+def tokenizer(z):
+    y = list(z)
+    p = list(map (x.get,y))
+    print(*p)
+    return p
+
+def detokenizer(p):
+    dtext = list(map(reverse_x.get,p))
+    print(''.join(dtext))
+    return
+    
+okay = tokenizer('#your value in here')
+detokenizer(okay)
